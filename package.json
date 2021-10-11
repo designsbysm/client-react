@@ -1,5 +1,5 @@
 {
-  "name": "@designsbysm/reactclient",
+  "name": "@designsbysm/client-react",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,7 +20,7 @@
   },
   "scripts": {
     ".client": "react-scripts start",
-    ".server": "cd ../server && modd",
+    ".server": "cd ../server-go && modd",
     "build": "react-scripts build",
     "serve": "serve -s build",
     "start": "run-p .server .client",
