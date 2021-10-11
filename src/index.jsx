@@ -1,12 +1,8 @@
-import React from "react";
-import ReactDOM from "react-dom";
-
-// components
 import { App } from "./components";
 import { HomePage } from "./pages";
-
-// assets
 import packageJson from "../package.json";
+import React from "react";
+import ReactDOM from "react-dom";
 
 const routes = {
   admin: [],
@@ -19,6 +15,10 @@ const routes = {
     },
   ],
 };
+
+if (module.hot) {
+  module.hot.accept();
+}
 
 ReactDOM.render(
   <App routes={routes} title={packageJson.name} version={packageJson.version} />,

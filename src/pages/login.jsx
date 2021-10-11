@@ -5,8 +5,8 @@ import React, { useState } from "react";
 
 const Page = ({ loginCB }) => {
   const [
-    username,
-    setUsername,
+    email,
+    setEmail,
   ] = useState({});
 
   const [
@@ -18,12 +18,12 @@ const Page = ({ loginCB }) => {
     <main className="contents login">
       <div className="form">
         <div className="group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="email">Email</label>
           <input
             type="text"
-            id="username"
+            id="email"
             onChange={event => {
-              setUsername(event.target.value);
+              setEmail(event.target.value);
             }}
           />
         </div>
@@ -41,12 +41,13 @@ const Page = ({ loginCB }) => {
           onClick={() => {
             apiRequest("/api/v1/session/login", {
               body: {
+                email,
                 password,
-                username,
               },
               method: "POST",
             })
               .then(res => {
+                console.log(res)
                 saveToken(res.token);
                 loginCB();
               })

@@ -40,32 +40,32 @@ const App = ({ routes, title, version }) => {
     setConfig,
   ] = useState({});
 
-  // const [
-  //   isAuthenticated,
-  //   setAuthenticated, 
-  // ] = useState(!!getToken());
-  // useEffect(() => {
-  //   apiRequest("/api/v1/server")
-  //     .then(res => {
-  //       setConfig(res);
+  const [
+    isAuthenticated,
+    setAuthenticated,
+  ] = useState(!!getToken());
+  useEffect(() => {
+    apiRequest("/api/v1/server")
+      .then(res => {
+        setConfig(res);
 
-  //       if (isAuthenticated && !res.user) {
-  //         removeToken();
-  //         setAuthenticated(false);
-  //       }
-  //     })
-  //     .catch(errorHandler);
-  // }, [
-  //   isAuthenticated,
-  //   setConfig, 
-  // ]);
+        if (isAuthenticated && !res.user) {
+          removeToken();
+          setAuthenticated(false);
+        }
+      })
+      .catch(errorHandler);
+  }, [
+    isAuthenticated,
+    setConfig,
+  ]);
 
   return (
     <Router>
       <Header config={config} logoutCB={() => setAuthenticated(false)} routes={routes} />
       <Switch>
-        {/* {getRoutes(isAuthenticated, "", routes.admin)} */}
-        {/* {getRoutes(isAuthenticated, "", routes.main)} */}
+        {getRoutes(isAuthenticated, "", routes.admin)}
+        {getRoutes(isAuthenticated, "", routes.main)}
         <Route
           path="/login"
           component={props => (
