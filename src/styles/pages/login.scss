@@ -1,0 +1,59 @@
+@import "../colors";
+@import "../mixins";
+
+/* stylelint-disable color-no-hex */
+$color--button-text: #fff;
+$color--input-border: 1px solid #ccc;
+/* stylelint-enable */
+
+.login.contents {
+  display: grid;
+  grid-template-areas: ". form .";
+  grid-template-columns: 0 auto 0;
+  margin: 2em;
+
+  @media only screen and (min-width: 468px) {
+    grid-template-columns: auto 400px auto;
+    margin-top: 4em;
+  }
+}
+
+.form {
+  grid-area: form;
+
+  .group {
+    margin-bottom: 2em;
+
+    label {
+      display: inline-block;
+      font-weight: 700;
+      margin-bottom: 5px;
+      max-width: 100%;
+      text-transform: uppercase;
+      @include font-size(0.75);
+    }
+
+    input {
+      border: $color--input-border;
+      border-radius: 0.25em;
+      padding: 1em;
+      width: calc(100% - 2em - 2px);
+      @include font-size(1);
+    }
+  }
+
+  button {
+    background-color: $color--branding-primary;
+    border-radius: 0.25em;
+    color: $color--button-text;
+    cursor: pointer;
+    padding: 1em 2em;
+    text-transform: uppercase;
+    @include font-size(1);
+    @include animate-property(background-color);
+
+    &:hover {
+      background-color: $color--branding-primary-hover;
+    }
+  }
+}

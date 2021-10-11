@@ -1,0 +1,19 @@
+@import "../colors";
+@import "../mixins";
+
+/* stylelint-disable color-no-hex */
+$color--footer-text: #fff;
+/* stylelint-enable */
+
+#root > footer {
+  background: $color--branding-primary;
+  color: $color--footer-text;
+  grid-area: footer;
+  padding: 0 1em;
+  @include align-vertical;
+  @include font-size(0.75);
+
+  .credits {
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,27 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
+#root {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "contents"
+    "footer";
+  grid-template-rows: 80px auto 50px;
+}
+
+.contents {
+  grid-area: contents;
+}
+
+body {
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
