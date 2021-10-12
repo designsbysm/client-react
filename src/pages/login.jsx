@@ -7,12 +7,12 @@ const Page = ({ loginCB }) => {
   const [
     email,
     setEmail,
-  ] = useState({});
+  ] = useState("");
 
   const [
     password,
     setPassword,
-  ] = useState({});
+  ] = useState("");
 
   return (
     <main className="contents login">
@@ -47,7 +47,6 @@ const Page = ({ loginCB }) => {
               method: "POST",
             })
               .then(res => {
-                console.log(res)
                 saveToken(res.token);
                 loginCB();
               })
