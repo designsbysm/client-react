@@ -22,7 +22,6 @@
     ".client": "react-scripts start",
     ".server": "cd ../server-go && modd",
     "build": "react-scripts build",
-    "serve": "serve -s build",
     "start": "run-p .server .client",
     "test": "react-scripts test"
   },
