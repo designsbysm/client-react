@@ -1,5 +1,5 @@
-import "../styles/components/progress.scss";
-import React from "react";
+import '../styles/components/progress.scss';
+import React from 'react';
 
 const Spinner = ({ title }) => (
   <div className="progress-box">
@@ -39,7 +39,7 @@ const Spinner = ({ title }) => (
         values="210; 50; 210;"
       />
     </svg>
-    <div className="title">{title || "Loading..."}</div>
+    <div className="title">{title || 'Loading...'}</div>
   </div>
 );
 

@@ -1,15 +1,15 @@
-import "../styles/components/header.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignOut } from "@fortawesome/pro-regular-svg-icons";
-import { faUser, faCaretDown } from "@fortawesome/pro-solid-svg-icons";
-import { Link, NavLink } from "react-router-dom";
-import { removeToken } from "../tools/appToken";
-import logo from "../images/logo.svg";
-import React, { useState } from "react";
+import '../styles/components/header.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOut } from '@fortawesome/pro-regular-svg-icons';
+import { faUser, faCaretDown } from '@fortawesome/pro-solid-svg-icons';
+import { Link, NavLink } from 'react-router-dom';
+import { removeToken } from '../tools/appToken';
+import logo from '../images/logo.svg';
+import React, { useState } from 'react';
 
 const getGreeting = user => {
   if (!user) {
-    return "Unknown";
+    return 'Unknown';
   }
 
   const { name, username } = user;
@@ -46,7 +46,7 @@ const Dropdown = (base, route) => {
         {route.title}
         <FontAwesomeIcon className="caret" icon={faCaretDown} />
       </span>
-      <div className={`header-menu-dropdown ${visible ? "show" : "hide"}`}>
+      <div className={`header-menu-dropdown ${visible ? 'show' : 'hide'}`}>
         {generateMenu(route.url, route.children)}
       </div>
     </div>
@@ -76,8 +76,8 @@ const Logo = ({ image }) => (
 const MenuItem = (base, route) => {
   const path = base + route.url;
 
-  return route.title === "seperator" ? (
-    <div className="seperator" key={"seperator" + Math.random()} />
+  return route.title === 'seperator' ? (
+    <div className="seperator" key={'seperator' + Math.random()} />
   ) : (
     <div className="header-menu-item" key={route.title + route.url}>
       {route.onClick ? (
@@ -99,7 +99,7 @@ const Nav = ({ logoutCB, routes, user }) => {
   const { admin, main } = routes;
 
   const hasLogout = admin
-    .filter(item => item.title === "Logout")
+    .filter(item => item.title === 'Logout')
     .reduce(() => {
       return true;
     }, false);
@@ -112,7 +112,7 @@ const Nav = ({ logoutCB, routes, user }) => {
         removeToken();
         logoutCB();
       },
-      title: "Logout",
+      title: 'Logout',
     };
     admin.push(logoutItem);
   }
@@ -126,10 +126,10 @@ const Nav = ({ logoutCB, routes, user }) => {
   return (
     <nav className="header-nav">
       <div key="main" className="header-nav-menu main">
-        {generateMenu("", main)}
+        {generateMenu('', main)}
       </div>
       <div key="admin" className="header-nav-menu admin">
-        {generateMenu("", [userItem])}
+        {generateMenu('', [userItem])}
       </div>
     </nav>
   );

@@ -10,6 +10,7 @@
   "plugins": [
     "react-hooks"
   ],
+  "root": true,
   "rules": {
     "array-bracket-newline": [
       "warn",
@@ -27,7 +28,13 @@
     ],
     "comma-dangle": [
       "warn",
-      "always-multiline"
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "always-multiline"
+      }
     ],
     "eol-last": [
       "warn",
@@ -44,6 +51,14 @@
         "ArrayExpression": 1,
         "SwitchCase": 1
       }
+    ],
+    "function-call-argument-newline": [
+      "error",
+      "consistent"
+    ],
+    "function-paren-newline": [
+      "error",
+      "consistent"
     ],
     "newline-per-chained-call": [
       "warn",
@@ -79,6 +94,7 @@
     "no-shadow": "error",
     "no-unreachable": "error",
     "no-unused-vars": "error",
+    "no-undef": 0,
     "no-var": "error",
     "object-curly-spacing": [
       "warn",
@@ -95,12 +111,13 @@
     "prefer-const": "error",
     "quotes": [
       "warn",
-      "double"
+      "single"
     ],
     "quote-props": [
       "warn",
       "as-needed"
     ],
+    "radix": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "require-await": "error",

@@ -1,18 +1,18 @@
-import "../styles/pages/login.scss";
-import { apiRequest, errorHandler } from "../tools/http";
-import { saveToken } from "../tools/appToken";
-import React, { useState } from "react";
+import '../styles/pages/login.scss';
+import { apiRequest, errorHandler } from '../tools/http';
+import { saveToken } from '../tools/appToken';
+import React, { useState } from 'react';
 
 const Page = ({ loginCB }) => {
   const [
     email,
     setEmail,
-  ] = useState("");
+  ] = useState('');
 
   const [
     password,
     setPassword,
-  ] = useState("");
+  ] = useState('');
 
   return (
     <main className="contents login">
@@ -39,12 +39,12 @@ const Page = ({ loginCB }) => {
         </div>
         <button
           onClick={() => {
-            apiRequest("/api/v1/session/login", {
+            apiRequest('/api/v1/session/login', {
               body: {
                 email,
                 password,
               },
-              method: "POST",
+              method: 'POST',
             })
               .then(res => {
                 saveToken(res.token);
@@ -59,5 +59,6 @@ const Page = ({ loginCB }) => {
     </main>
   );
 };
+// Page.propTypes = {
 
 export default Page;

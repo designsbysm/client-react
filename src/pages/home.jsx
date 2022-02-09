@@ -1,32 +1,32 @@
-import { apiRequest, errorHandler } from "../tools/http";
-import React, { useState } from "react";
+import { apiRequest, errorHandler } from '../tools/http';
+import React, { useState } from 'react';
 
 // components
-import { ProgressCounter, ProgressSpinner } from "../components";
+import { ProgressCounter, ProgressSpinner } from '../components';
 
 // assets
-import "../styles/pages/home.scss";
+import '../styles/pages/home.scss';
 
 const Page = props => {
   const initialProgress = 100;
 
   const [
     showSpinner,
-    setShowSpinner, 
+    setShowSpinner,
   ] = useState(true);
 
   const [
     showProgress,
-    setShowProgress, 
+    setShowProgress,
   ] = useState(false);
 
   const [
     valueProgress,
-    setValueProgress, 
+    setValueProgress,
   ] = useState(initialProgress);
 
   const simulateProgress = async value => {
-    await apiRequest("/api/v1/mock/sleep/25")
+    await apiRequest('/api/v1/mock/sleep/25')
       .then(() => {
         if (value <= 0) {
           setValueProgress(initialProgress);

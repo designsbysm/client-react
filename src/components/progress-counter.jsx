@@ -1,7 +1,7 @@
-import "../styles/components/progress.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/pro-regular-svg-icons";
-import React from "react";
+import '../styles/components/progress.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/pro-regular-svg-icons';
+import React from 'react';
 
 const Progress = ({ close, max, title, value }) => {
   const oneHundredPercent = Math.PI * 80;
@@ -31,7 +31,7 @@ const Progress = ({ close, max, title, value }) => {
           strokeDashoffset={-`${oneHundredPercent - oneHundredPercent * precent}`}
         />
       </svg>
-      <div className="title">{`${title || "Running"}: ${value || "###"}`}</div>
+      <div className="title">{`${title || 'Running'}: ${value || '###'}`}</div>
     </div>
   );
 };

@@ -1,14 +1,14 @@
-import { apiRequest, errorHandler } from "../tools/http";
-import { getToken, removeToken } from "../tools/appToken";
-import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
+import { apiRequest, errorHandler } from '../tools/http';
+import { getToken, removeToken } from '../tools/appToken';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 
 // components
-import { Footer, Header } from "./index";
-import { LoginPage } from "../pages";
+import { Footer, Header } from './index';
+import { LoginPage } from '../pages';
 
 // assets
-import "../styles/components/app.scss";
+import '../styles/components/app.scss';
 
 const getRoutes = (isAuthenticated, base, routes) =>
   routes.map(route => {
@@ -25,7 +25,7 @@ const getRoutes = (isAuthenticated, base, routes) =>
       ) : (
         <Redirect
           to={{
-            pathname: "/login",
+            pathname: '/login',
             state: { from: props.location },
           }}
         />
@@ -45,7 +45,7 @@ const App = ({ routes, title, version }) => {
     setAuthenticated,
   ] = useState(!!getToken());
   useEffect(() => {
-    apiRequest("/api/v1/server")
+    apiRequest('/api/v1/server')
       .then(res => {
         setConfig(res);
 
@@ -64,26 +64,26 @@ const App = ({ routes, title, version }) => {
     <Router>
       <Header config={config} logoutCB={() => setAuthenticated(false)} routes={routes} />
       <Switch>
-        {getRoutes(isAuthenticated, "", routes.admin)}
-        {getRoutes(isAuthenticated, "", routes.main)}
+        {getRoutes(isAuthenticated, '', routes.admin)}
+        {getRoutes(isAuthenticated, '', routes.main)}
         <Route
           path="/login"
           component={props => (
             <LoginPage
               loginCB={() => {
                 const { from } = props.location.state || {
-                  from: { pathname: "/" },
+                  from: { pathname: '/' },
                 };
 
                 setAuthenticated(true);
-                props.history.push(from.pathname || "/");
+                props.history.push(from.pathname || '/');
               }}
             />
           )}
         />
         <Route
           render={props => {
-            const isHome = props.location.pathname === "/";
+            const isHome = props.location.pathname === '/';
 
             if (!isHome) {
               return <Redirect to="/" />;

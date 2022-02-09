@@ -1,4 +1,4 @@
-import { getToken } from "../appToken";
+import { getToken } from '../appToken';
 
 const conditionOptions = (options = {}) => {
   const { body, headers } = options;
@@ -6,23 +6,23 @@ const conditionOptions = (options = {}) => {
 
   // add auth
   const token = getToken();
-  if (token !== "undefined") {
+  if (token !== 'undefined') {
     updates.headers = {
       ...updates.headers,
       Authorization: `Bearer ${token}`,
     };
   }
 
-  if (!body || (headers && headers["Content-Type"])) {
+  if (!body || (headers && headers['Content-Type'])) {
     return updates;
   }
 
   const bodyType = typeof body;
-  if (bodyType === "object") {
+  if (bodyType === 'object') {
     updates.body = JSON.stringify(body);
     updates.headers = {
       ...updates.headers,
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     };
   }
 
