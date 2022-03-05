@@ -1,5 +1,5 @@
-export default error => {
+export default err => {
   // TODO: add notification
 
-  console.error(error);
+  console.error(err);
 };

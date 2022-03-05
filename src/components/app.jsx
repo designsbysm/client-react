@@ -44,15 +44,16 @@ const App = ({ routes, title, version }) => {
     isAuthenticated,
     setAuthenticated,
   ] = useState(!!getToken());
+
   useEffect(() => {
     apiRequest('/api/v1/server')
       .then(res => {
         setConfig(res);
 
-        if (isAuthenticated && !res.user) {
-          removeToken();
-          setAuthenticated(false);
-        }
+        // if (isAuthenticated && !res.user) {
+        //   removeToken();
+        //   setAuthenticated(false);
+        // }
       })
       .catch(errorHandler);
   }, [
