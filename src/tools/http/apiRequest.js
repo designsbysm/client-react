@@ -2,7 +2,7 @@ import { environment } from '../../environments/environment';
 import { getToken } from '../appToken';
 import * as join from 'url-join';
 
-const conditionURL = (url = '') => join(environment.apiURL, url);
+const conditionURL = (url = '') => join(environment.backendURL, url);
 
 const conditionOptions = (options = {}) => {
   const { body, headers } = options;
