@@ -29,8 +29,8 @@ const Dropdown = (base, route) => {
 
   return (
     <div
-      key={route.title}
       className="header-menu-item"
+      key={route.title}
       onClick={() => {
         setVisible(!visible);
       }}
@@ -39,12 +39,18 @@ const Dropdown = (base, route) => {
       }}
       onMouseLeave={() => {
         setVisible(false);
-      }}
-    >
+      }}>
       <span className="link">
-        {route.icon ? <FontAwesomeIcon className="icon" icon={route.icon} fixedWidth /> : null}
+        {route.icon ? <FontAwesomeIcon
+          className="icon"
+          fixedWidth
+          icon={route.icon}
+        /> : null}
         {route.title}
-        <FontAwesomeIcon className="caret" icon={faCaretDown} />
+        <FontAwesomeIcon
+          className="caret"
+          icon={faCaretDown}
+        />
       </span>
       <div className={`header-menu-dropdown ${visible ? 'show' : 'hide'}`}>
         {generateMenu(route.url, route.children)}
@@ -68,8 +74,13 @@ const generateMenu = (base, menu) =>
   });
 
 const Logo = ({ image }) => (
-  <Link to="/" className="header-logo">
-    <img src={image} alt="SM Logo" />
+  <Link
+    className="header-logo"
+    to="/">
+    <img
+      alt="SM Logo"
+      src={image}
+    />
   </Link>
 );
 
@@ -77,17 +88,36 @@ const MenuItem = (base, route) => {
   const path = base + route.url;
 
   return route.title === 'seperator' ? (
-    <div className="seperator" key={'seperator' + Math.random()} />
+    <div
+      className="seperator"
+      key={'seperator' + Math.random()}
+    />
   ) : (
-    <div className="header-menu-item" key={route.title + route.url}>
+    <div
+      className="header-menu-item"
+      key={route.title + route.url}>
       {route.onClick ? (
-        <span className="link" onClick={route.onClick}>
-          {route.icon ? <FontAwesomeIcon className="icon" icon={route.icon} fixedWidth /> : null}
+        <span
+          className="link"
+          onClick={route.onClick}>
+          {route.icon ? <FontAwesomeIcon
+            className="icon"
+            fixedWidth
+            icon={route.icon}
+          /> : null}
           Logout
         </span>
       ) : (
-        <NavLink exact activeClassName="current" key={route.url} to={path}>
-          {route.icon ? <FontAwesomeIcon className="icon" icon={route.icon} fixedWidth /> : null}
+        <NavLink
+          activeClassName="current"
+          exact
+          key={route.url}
+          to={path}>
+          {route.icon ? <FontAwesomeIcon
+            className="icon"
+            fixedWidth
+            icon={route.icon}
+          /> : null}
           {route.title}
         </NavLink>
       )}
@@ -125,10 +155,14 @@ const Nav = ({ logoutCB, routes, user }) => {
 
   return (
     <nav className="header-nav">
-      <div key="main" className="header-nav-menu main">
+      <div
+        className="header-nav-menu main"
+        key="main">
         {generateMenu('', main)}
       </div>
-      <div key="admin" className="header-nav-menu admin">
+      <div
+        className="header-nav-menu admin"
+        key="admin">
         {generateMenu('', [userItem])}
       </div>
     </nav>
@@ -141,7 +175,11 @@ const Header = ({ config, logoutCB, routes }) => {
   return (
     <header className="site-header">
       <Logo image={logo} />
-      {user ? <Nav logoutCB={logoutCB} routes={routes} user={user} /> : null}
+      {user ? <Nav
+        logoutCB={logoutCB}
+        routes={routes}
+        user={user}
+      /> : null}
     </header>
   );
 };

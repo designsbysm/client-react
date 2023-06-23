@@ -20,21 +20,21 @@ const Page = ({ loginCB }) => {
         <div className="group">
           <label htmlFor="email">Email</label>
           <input
-            type="text"
             id="email"
             onChange={event => {
               setEmail(event.target.value);
             }}
+            type="text"
           />
         </div>
         <div className="group">
           <label htmlFor="password">Password</label>
           <input
-            type="password"
             id="password"
             onChange={event => {
               setPassword(event.target.value);
             }}
+            type="password"
           />
         </div>
         <button
@@ -47,12 +47,15 @@ const Page = ({ loginCB }) => {
               method: 'POST',
             })
               .then(res => {
+                if (!res?.token) {
+                  throw res;
+                }
+
                 saveToken(res.token);
                 loginCB();
               })
               .catch(errorHandler);
-          }}
-        >
+          }}>
           Login
         </button>
       </div>

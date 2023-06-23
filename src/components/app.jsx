@@ -21,7 +21,10 @@ const getRoutes = (isAuthenticated, base, routes) =>
     const Page = route.component;
     const component = props =>
       isAuthenticated ? (
-        <Page {...props} route={route} />
+        <Page
+          {...props}
+          route={route}
+        />
       ) : (
         <Redirect
           to={{
@@ -31,7 +34,12 @@ const getRoutes = (isAuthenticated, base, routes) =>
         />
       );
 
-    return <Route exact key={path} path={path} component={component} />;
+    return <Route
+      component={component}
+      exact
+      key={path}
+      path={path}
+    />;
   });
 
 const App = ({ routes, title, version }) => {
@@ -63,12 +71,15 @@ const App = ({ routes, title, version }) => {
 
   return (
     <Router>
-      <Header config={config} logoutCB={() => setAuthenticated(false)} routes={routes} />
+      <Header
+        config={config}
+        logoutCB={() => setAuthenticated(false)}
+        routes={routes}
+      />
       <Switch>
         {getRoutes(isAuthenticated, '', routes.admin)}
         {getRoutes(isAuthenticated, '', routes.main)}
         <Route
-          path="/login"
           component={props => (
             <LoginPage
               loginCB={() => {
@@ -81,6 +92,7 @@ const App = ({ routes, title, version }) => {
               }}
             />
           )}
+          path="/login"
         />
         <Route
           render={props => {
@@ -92,7 +104,10 @@ const App = ({ routes, title, version }) => {
           }}
         />
       </Switch>
-      <Footer title={title} version={version} />
+      <Footer
+        title={title}
+        version={version}
+      />
     </Router>
   );
 };

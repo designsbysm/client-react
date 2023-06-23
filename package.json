@@ -26,7 +26,10 @@
     "url-join": "^4.0.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.17.0"
+    "@babel/eslint-parser": "^7.17.0",
+    "@babel/preset-react": "^7.16.7",
+    "eslint": "^8.10.0",
+    "eslint-plugin-react": "^7.29.3"
   },
   "eslintConfig": {
     "extends": [

@@ -46,8 +46,7 @@ const Page = props => {
         onClick={() => {
           setShowSpinner(true);
           setShowProgress(false);
-        }}
-      >
+        }}>
         Show
       </button>
       <button onClick={() => setShowSpinner(false)}>Hide</button>
@@ -57,8 +56,7 @@ const Page = props => {
           setShowSpinner(false);
           setShowProgress(true);
           simulateProgress(valueProgress);
-        }}
-      >
+        }}>
         Show
       </button>
       <button onClick={() => setShowProgress(false)}>Hide</button>
